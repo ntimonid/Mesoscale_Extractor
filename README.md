@@ -6,7 +6,8 @@ mesoscale_extractor_example.ipynb: examplar Jupyter Notebook that illustrates th
 mesoscales_extractor.py: the main code behind the tool
 cfg.py: a configuration script containing all the libraries used by the tool
 
-Directories:
+Directories:   
+
 libraries: a number of auxiliary Python scripts that are being used as back-end libraries for the tool.
   1. convertAllenSpace.py: contains a number of functions related to the affine transformation operations needed to register neuronal morphologies to a reference space
   2. NeuronMorphology.py: class used for storing, manipulating and analysing neuronal morphologies as Python class objects
