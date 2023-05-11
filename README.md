@@ -10,5 +10,7 @@ Directories:
 libraries: a number of auxiliary Python scripts that are being used as back-end libraries for the tool.
   1. convertAllenSpace.py: contains a number of functions related to the affine transformation operations needed to register neuronal morphologies to a reference space
   2. NeuronMorphology.py: class used for storing, manipulating and analysing neuronal morphologies as Python class objects
-  3. utils.py: a collection of back-end functions that are important for the tool.
+  3. utils.py: a collection of back-end functions that are important for the tool.  
+     
+     
 atlas_files: a number of nrrd, pkl and json files containing pre-computed information that is fundamental for the spatial orientation of the data to the Common Coordinate Framework developed by the Allen Institute, collection of morphologies that have been grouped based on the common anatomical location of their soma area which dramatically speeds up the search for neurons needed to extract mesoscale statistics and anatomical information related to the distinct individual barrels of the mouse primary somatosensory whiskers cortex (wS1). 
