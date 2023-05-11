@@ -15,19 +15,16 @@ def load_barrel_files(data_path, islayer = False):
 def load_useful_variables(data_path, resolution = 10):
 
     try:
-
         [annotation,allenMeta] = nrrd.read('{}/annotation_{}.nrrd'.format(data_path,resolution))
-        with open(os.path.join(data_path, 'ccf3_acr2id.json')) as fp:
-             acr2id = json.load(fp)
-        with open(os.path.join(data_path,'ancestorsById.json')) as fp:
-            ancestorsById = json.load(fp)
     except:
         reference_space_key = 'annotation/ccf_2017'
         rspc = ReferenceSpaceCache(resolution, reference_space_key, manifest='manifest.json')
         annotation, allenMeta = rspc.get_annotation_volume()
-        tree = rspc.get_structure_tree(structure_graph_id=1)
-        acr2id = tree.get_id_acronym_map()
-        ancestorsById = tree.get_ancestor_id_map()
+    
+    with open(os.path.join(data_path, 'ccf3_acr2id.json')) as fp:
+         acr2id = json.load(fp)
+    with open(os.path.join(data_path,'ancestorsById.json')) as fp:
+        ancestorsById = json.load(fp)
 
     id2acr = { id:acr for acr,id in acr2id.items() }
     if 0 not in id2acr:
