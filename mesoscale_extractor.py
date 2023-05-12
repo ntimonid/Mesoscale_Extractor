@@ -27,7 +27,7 @@ class NeuronPopulation:
     def has_numbers(self, inputString):
         return any(char.isdigit() for char in inputString)
 
-    def make_connectivity_matrix(self, source_areas, target_areas, feature = 'counts', extract = 'terminals', mode = 'full'):
+    def make_connectivity_matrix(self, source_areas, target_areas, feature = 'counts', extract = 'terminals'):
 
         mesoscale_stats = {}
         targets_per_neuron = OrderedDict()
@@ -43,7 +43,7 @@ class NeuronPopulation:
             if source_area not in acr_to_morpho_id:
                 acr_to_morpho_id[source_area] = []
             for rand_area in acr_to_morpho_id.keys():  # First ensure that you have aggregated neurons of every child node
-                if rand_area == '[background]': continue
+                if rand_area == '[background]' or rand_area == source_area: continue
                 nu_id = str(self.acr2id[rand_area])
                 if self.acr2id[source_area] in self.ancestorsById[nu_id]: # found a child area ...
                       acr_to_morpho_id[source_area].extend(acr_to_morpho_id[rand_area])
@@ -81,12 +81,9 @@ class NeuronPopulation:
                     axonal_length = neuron_cls.compute_axonal_length(self.annotation,self.id2acr, terminals = term)
                     for key,val in axonal_length.items():
                         if key == '[background]' : continue
-                        # if mode == 'partial':
-                        #     key = self.un_num(key)
                         trg_id = str(self.acr2id[key])
                         trg_hits = [trg_val for trg_val in target_areas if self.acr2id[trg_val] in self.ancestorsById[trg_id]] # found a child area
                         if len(trg_hits) > 0:
-                        # if key in target_areas:
                                 key = trg_hits[0]
                                 if (source_area,neuron_name) not in mesoscale_stats.keys():
                                     mesoscale_stats[(source_area,neuron_name)] = OrderedDict()
@@ -97,12 +94,9 @@ class NeuronPopulation:
                 elif feature == 'counts':
                     for key,val in anatomical_stats.items():
                         if key == '[background]' : continue
-                        # if mode == 'partial':
-                        #     key = self.un_num(key)
                         trg_id = str(self.acr2id[key])
                         trg_hits = [trg_val for trg_val in target_areas if self.acr2id[trg_val] in self.ancestorsById[trg_id]] # found a child area
                         if len(trg_hits) > 0:
-                        # if key in target_areas:
                             key = trg_hits[0]
                             if (source_area,neuron_name) not in mesoscale_stats.keys():
                                 mesoscale_stats[(source_area,neuron_name)] = OrderedDict()
