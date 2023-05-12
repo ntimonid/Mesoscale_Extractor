@@ -69,6 +69,9 @@ class NeuronPopulation:
 
                 neuron_cls = NeuronMorphology(neuronDict = target_neuron)
                 neuron_name = neuron_id.split('.')[0]
+                if db == 'braintell':
+                    re_str = neuron_name.split('_')[1:3]
+                    neuron_name = re_str[0]+'_'+ re_str[1]
                 neuron_cls.transform(out_orientation)
 
                 anatomical_stats = neuron_cls.get_anatomical_stats(self.annotation,self.id2acr, mode = extract)
@@ -184,7 +187,9 @@ class NeuronPopulation:
 
                 neuron_cls = NeuronMorphology(neuronDict = target_neuron)
                 neuron_name = neuron_id.split('.')[0]
-
+                if db == 'braintell':
+                    re_str = neuron_name.split('_')[1:3]
+                    neuron_name = re_str[0]+'_'+ re_str[1]
                 neuron_cls.transform(out_orientation)
 
                 if feature == 'length':
