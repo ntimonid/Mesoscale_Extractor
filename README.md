@@ -1,5 +1,5 @@
-# mesoscale_extractor
-Given a source and a target mouse brain area for which the user wishes to delineate projection patterns, mesoscale_extractor downloads publicly available neuronal morphologies, whose soma is located in the source and whose axonal terminals are located in the target areas, and it estimates meso-scale connectivity statistics similar to how it is computed in tract-tracing experiments such as in Oh et al 2014.  
+# Mesoscale_Extractor
+Given a source and a target mouse brain area for which the user wishes to delineate projection patterns, Mesoscale_Extractor downloads publicly available neuronal morphologies, whose soma is located in the source and whose axonal terminals are located in the target areas, and it estimates meso-scale connectivity statistics similar to how it is computed in tract-tracing experiments such as in Oh et al 2014.  
 
 Files:  
 mesoscale_extractor_example.ipynb: examplar Jupyter Notebook that illustrates the utility of the tool
